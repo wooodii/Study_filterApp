@@ -14,9 +14,21 @@ const Home = () => {
         <input style={{width : "250px", height : "40px"}} placeholder="병원/진료과를 검색해보세요"type="text"/>
         <button style={{width : "45px", height : "45px"}} onClick={searchbtn}>검색</button>   
         </div>
+    
+    <div>
+      사용자정보
+    </div>
+
+    <div>
+      기온/날씨
     </div>
     
+    <div>
+      문진표 작성 버튼
+    </div>
+    </div>
     
+   
   );
 };
 
