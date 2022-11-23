@@ -1,14 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 const Area = () => {
-
-    const arealist = [
-        "경상남도", "충청북도", "청주", "서울특별시", 
-        "대구광역시", "강원도", "경기도", "광주광역시", 
-        "전라북도", "인천광역시", " 전라남도", 
-        "울산광역시" ,"대구광역시"
-    ]
-
+    const medicalCourse = () => {navigate('/medicalCourse')}
+    const area = () => {navigate('/area')}
     const navigate = useNavigate('');
+
     return (
         <div style={{ width: "390px", height: "844px", border: "2px solid black" }}>
         <div style={{margin: "5vh", display: "flex"}}>
@@ -18,14 +13,14 @@ const Area = () => {
         
         <hr/>
         <div>
-          <button  onClick={ navigate('/medicalCourse')}>진료과목</button>
-          <button onClick={navigate('/area')}>지역</button>
+            <button  onClick={medicalCourse}>진료과목</button>
+            <button onClick={area}>지역</button>
         </div>
         <hr/>
 
         <div style={{margin: "4vh", width: "300px", height: "600px", border: "2px solid black"}}>
         <div>
-            {arealist.map((item, index) => (<button style={{margin : "0.5em"}}> {arealist[index]} </button>))}
+
         </div>
     </div> 
     
