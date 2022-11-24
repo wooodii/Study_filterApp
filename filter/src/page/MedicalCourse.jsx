@@ -13,26 +13,21 @@ import InputGroup from 'react-bootstrap/InputGroup';
 const MedicalCourse = () => {
     const [search, setSearch] = useState();
     const [searchFin, setSearchFin] = useState();
-    const [searchArray, setSearchArray] = useState();
+    const [kind, setKind] = useState();
     
     const navigate = useNavigate();
     const medicalCourse = () => {navigate('/medicalCourse')}
     const area = () => {navigate('/area')}
-    useEffect(() => {
-        
-    })
     return (
         <div style={{ width: "390px", height: "844px", border: "2px solid black" }}>
-           <InputGroup className="mb-3" style={{marginTop : "5vh"}}>
+            <div style={{display : "flex", marginTop : "5vh"}}>
+            <CourseMenu setKind={setKind}/><AreaMenu/>    
+            <InputGroup className="mb-3">
             <Form.Control
             onChange={e => {setSearch(e.target.value)}}
-            placeholder="병원/진료과를 검색해보세요" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-            <Button onClick={() => (setSearchFin(search))} variant="outline-secondary" id="button-addon2">검색</Button>
+            placeholder="병원/진료과 검색" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
             </InputGroup>
-
-        <hr/>
-          <div style={{display : "flex"}} onClick={medicalCourse}><CourseMenu/><AreaMenu/></div>
-        <hr/>
+            </div>
         
         <div style={{margin: "4vh", width: "300px", height: "600px", border: "2px solid black"}}>
            {Hospital.filter((value) => {
@@ -40,11 +35,14 @@ const MedicalCourse = () => {
                 return value
             }else if(value.사업장.includes(search)){
                 return value
+            }else if(value.진료과목내용명.includes(kind)){
+                return value
             }
            }).map((index) => {
                 return <SearchHosptial 사업장={index.사업장} 전화번호 = {index.전화번호} 주소={index.주소} />
             })}
         </div> 
+        
 
                 
         </div>
