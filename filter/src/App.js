@@ -3,7 +3,6 @@ import Home from './page/Home';
 import {Route, Routes} from 'react-router-dom';
 import Layout from './page/Layout';
 import MedicalCourse from './page/MedicalCourse';
-import Area from './page/Area';
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
         <Route path='/' element={<Layout/>}>
           <Route path='/' element={<Home/>}/>
           <Route path='/medicalCourse' element={<MedicalCourse/>}/>
-          <Route path='/area' element={<Area/>}/>
         </Route>  
       </Routes>
         

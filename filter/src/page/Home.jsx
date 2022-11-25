@@ -1,4 +1,3 @@
-import Area from "./Area";
 import MedicalCourse from "./MedicalCourse";
 import { useNavigate } from 'react-router-dom';
 
