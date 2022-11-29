@@ -6,43 +6,29 @@ import SearchHosptial from './SearchHospital';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-const CourseMenu = ({setKind}) => {
+const CourseMenu = ({kind, setKind, setSearch, setArea}) => {
+    const [limit, setLimit] = useState(5);
+    const [page, setPage] = useState(1);
+    const offset = (page -1) * limit;
     
-    const courseArray = [
-      {name : "내과"}, 
-      {name : "신경과"}, 
-      {name : "외과"}, 
-      {name : "정형외과"}, 
-      {name : "신경외과"}, 
-      {name : "마취통증의학과"}, 
-      {name : "피부과"}, 
-      {name : "재활의학과"}, 
-      {name : "한방내과"}, 
-      {name : "한방재활의학과"}, 
-      {name : "내과"}, 
-      {name : "내과"}, 
-    ]
-
-    const [course, setCourse] = useState();
-
     return (
         <div>
-        <Dropdown>
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
-            진료과목 
-            {}
+        <Dropdown onClick={() => {setSearch(null); setArea(null);}}>
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" >
+            {kind ? kind : "진료과목"}
           </Dropdown.Toggle>
-
+          
           <Dropdown.Menu variant="dark">
-            <Dropdown.Item href="#/action-2" onClick={() => { setKind("내과")
+            <Dropdown.Item 
+            onClick={() => {setKind("내과")
               Hospital.filter((value) => {
                 if (value.진료과목내용명.includes("내과")) {
                   return <SearchHosptial 사업장={value.사업장} 전화번호={value.전화번호} 주소={value.주소} />;
                 }
-            });
+            }).slice(offset, offset + limit);
             } }>내과</Dropdown.Item>
 
-            <Dropdown.Item href = "#/action-3" onClick={() => { setKind("신경과")
+            <Dropdown.Item  onClick={() => { setKind("신경과")
               Hospital.filter((value) => {
                 if (value.진료과목내용명.includes("신경과")) {
                   return <SearchHosptial 사업장={value.사업장} 전화번호={value.전화번호} 주소={value.주소} />;
@@ -107,6 +93,7 @@ const CourseMenu = ({setKind}) => {
             } } >한방재활의학과</Dropdown.Item>
         </Dropdown.Menu>
         </Dropdown>
+
         </div>
     );
 }

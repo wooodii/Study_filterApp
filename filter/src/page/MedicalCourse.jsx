@@ -9,22 +9,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-const MedicalCourse = () => {
+const SearchBar = () => {
     // 출력되는 내용이 스크롤 안에 담길 수 있도록 제작
     const [search, setSearch] = useState();
     const [searchFin, setSearchFin] = useState();
     const [kind, setKind] = useState();
     const [area, setArea] = useState();
-
-    const navigate = useNavigate();
-    const medicalCourse = () => {navigate('/medicalCourse')}
+    
     return (
         <div style={{ width: "390px", height: "844px", border: "2px solid black" }}>
             <div style={{display : "flex", marginTop : "5vh"}}>
-            <CourseMenu setKind={setKind}/><AreaMenu setArea={setArea}/>    
+            <CourseMenu setKind={setKind} kind={kind} setArea={setArea} setSearch={setSearch}/>
+            <AreaMenu area={area} setArea={setArea} setSearch={setSearch} setKind={setKind}/>    
+            
             <InputGroup className="mb-3">
             <Form.Control
-            onChange={e => {setSearch(e.target.value)}}
+            onChange={e => {setSearch(e.target.value); setKind(null); setArea(null)}}
             placeholder="병원/진료과 검색" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
             </InputGroup>
             </div>
@@ -44,10 +44,8 @@ const MedicalCourse = () => {
                 return <SearchHosptial 사업장={index.사업장} 전화번호 = {index.전화번호} 주소={index.주소} />
             })}
         </div> 
-        
-                
         </div>
         
     );
 }
-export default MedicalCourse;
+export default SearchBar;
