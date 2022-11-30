@@ -1,0 +1,11 @@
+.starColor{
+    color : blue;
+}
+
+button{
+    all :unset;
+}
+
+.starColorNull{
+    color : "lightgray"
+}

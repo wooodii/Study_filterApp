@@ -3,6 +3,7 @@ import { createContext } from "react";
 
 const DataContext = createContext(); 
 const DataProvider = ({children}) => {
+    const [user, setUser] = useState({name : "우디",  review :  null, likelist : []})
     const [comments, setComments] = useState([
         {
             commentId : 1, 
@@ -12,8 +13,8 @@ const DataProvider = ({children}) => {
     ]);
     
     const value = {
-        state :  {comments},
-        action :  {setComments}
+        state :  {user, comments},
+        action :  {setUser, setComments}
     }
 
     return <DataContext.Provider value={value} > {children} </DataContext.Provider>

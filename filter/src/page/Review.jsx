@@ -1,34 +1,37 @@
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Star from "../components/Star";
+import WriteReview from "./WriteReview";
 
 const Review = () => {
     return (
         <>
-         <div style={{ width: "390px", height: "844px", border: "2px solid black" }}>
-            <Row>
-                <Col xs={3}><h2>리뷰</h2></Col>
-                <Col> <button style={{marginLeft : "11em"}}> 리뷰작성 </button> </Col>
+         <div style={{ width: "390px", height: "844px", border: "2px solid black"}}>
+            <Row style={{marginTop : "2vh"}}> 
+                <Col xs={3} style={{marginBottom : "2vh"}}><h2>리뷰</h2></Col>
+                <Col> <WriteReview/> </Col>
             </Row>
             <Row>
                 <div> 이 병원을 {}가 재방문하고 싶어해요 </div>
             </Row>
-            <Row style = {{ marginBottom : " 3vh"}}>
-                <Row style={{backgroundColor : "lightgray", borderRadius : "10px", width : "360px", marginLeft : "2vw"}}>
-                    <Col xs={5}>평점 / 별점 </Col>
-                    <Col xs={4}>  
-                        <div> 매우만족 </div> 
-                        <div> 만족 </div> 
-                        <div> 보통 </div> 
-                        <div> 별로 </div> 
-                        <div> 매우별로 </div> 
+            <Row style = {{ marginBottom : " 5vh"}}>
+                <Row style={{backgroundColor : "lightgray", borderRadius : "10px", width : "360px", marginLeft : "3vw"}}>
+                    <Col xs={6}>
+                        평점 / 별점 
+                    </Col>
+                    <Col xs={3} style={{display : "block" }}>  
+                        <Row> 매우만족 </Row> 
+                        <Row> 만족 </Row> 
+                        <Row> 보통 </Row> 
+                        <Row> 별로 </Row> 
+                        <Row> 매우별로 </Row> 
                     </Col>
                     <Col xs={3}>
                         dsfd
                     </Col>
                 </Row>
             </Row>
-            <Row style={{backgroundColor : "lightgray", borderRadius : "10px", width : "340px", marginLeft : "2vw"}}>
+            <Row style={{backgroundColor : "lightgray", borderRadius : "10px", width : "340px", marginLeft : "3vw"}}>
                 <Row >
                     <Star/>
                 </Row>
@@ -37,8 +40,7 @@ const Review = () => {
                     <textarea name="" id="" cols="10" rows="5"></textarea>
                 </Row>
             </Row>
-            
-         </div>
+        </div>
         </>
     );
 }
