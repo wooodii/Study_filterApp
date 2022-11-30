@@ -1,9 +1,13 @@
+import { useState } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Star from "../components/Star";
 import WriteReview from "./WriteReview";
 
-const Review = () => {
+const Review = (props) => {
+    const {countStar} = props; 
+    console.log(countStar);
+
     return (
         <>
          <div style={{ width: "390px", height: "844px", border: "2px solid black"}}>
