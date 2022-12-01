@@ -2,30 +2,32 @@ import { useState } from "react";
 import { createContext } from "react";
 
 const DataContext = createContext(); 
-const DataProvider = ({children}, props) => {
-    const [user, setUser] = useState({name : "sss",  review :  null, likelist : []});
-    
+const DataProvider = ({children}) => {
+
     // 리뷰작성
     const [comments, setComments] = useState([
         {
-            commentId : 1, 
+            Id : 1, 
             name : "user",
-            comment : "comment",
-            countStar : 0,
+            countStar : 3,
+            btn1 : "효과좋아요",
+            btn2 : "친절해요", 
+            btn3 : "신규장비에요",
+            review : "comment",
+            yesNo : "yes" 
         }
     ]);
 
     const [commentCount, setCommentCount] = useState(2); 
 
-
     // 재방문버튼
     const value = {
-        state :  {user, comments, commentCount },
-        action :  {setUser, setComments, setCommentCount}
+        state :  {comments, commentCount },
+        action :  {setComments, setCommentCount}
     }
 
     return <DataContext.Provider value={value} > {children} </DataContext.Provider>
 }
 
-export{DataProvider}
+export {DataProvider}
 export default DataContext;

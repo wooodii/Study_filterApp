@@ -10,19 +10,24 @@ import { useContext } from "react";
 import DataContext from "../Context/DataContext";
 
 const WriteReview = () => {
-  
   const data = useContext(DataContext);
-
   const [countStar, setCountStar] = useState();
+  
   const [show, setShow] = useState(false);
+
   const handleClose = () => {
     data.action.setComments([...data.state.comments, {
-      commentId : 2, 
+      Id : 1, 
       name : "user",
-      comment : "comment",
-      countStar : countStar,
-  }])
-    setShow(false);
+      countStar : 0,
+      btn1 : "효과좋아요",
+      btn2 : "친절해요", 
+      btn3 : "신규장비에요",
+      review : "comment",
+      yesNo : "yes" 
+  }]);
+
+    setShow(false); 
     console.log(data.state.comments)
   };
 
@@ -30,6 +35,7 @@ const WriteReview = () => {
 
   // 색상변경
   const [btnColor, setBtnColor] = useState(["blue"]);
+
   const [reviewBtn, setReviewBtn] = useState([
     { btnId : 1, ChooseBtn : "효과없어요" }, 
     { btnId : 2, ChooseBtn : "보통이에요" }, 
