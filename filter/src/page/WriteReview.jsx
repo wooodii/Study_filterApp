@@ -6,22 +6,46 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import CommentInput from "../components/CommentInput";
 import { Form } from "react-bootstrap";
+import { useContext } from "react";
+import DataContext from "../Context/DataContext";
 
-const WriteReview = (props) => {
-  const { countStar, setCountStar } = props;
+const WriteReview = () => {
+  
+  const data = useContext(DataContext);
 
+  const [countStar, setCountStar] = useState();
   const [show, setShow] = useState(false);
+  const handleClose = () => {
+    data.action.setComments([...data.state.comments, {
+      commentId : 2, 
+      name : "user",
+      comment : "comment",
+      countStar : countStar,
+  }])
+    setShow(false);
+    console.log(data.state.comments)
+  };
 
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // 색상변경
+  const [btnColor, setBtnColor] = useState(["blue"]);
+  const [reviewBtn, setReviewBtn] = useState([
+    { btnId : 1, ChooseBtn : "효과없어요" }, 
+    { btnId : 2, ChooseBtn : "보통이에요" }, 
+    { btnId : 3, ChooseBtn : "효과좋아요" }, 
+    { btnId : 4, ChooseBtn : "불친절해요" }, 
+    { btnId : 5, ChooseBtn : "친절해요" }, 
+    { btnId : 6, ChooseBtn : "노후되었어요" }, 
+    { btnId : 7, ChooseBtn : "신규장비에요" }
+])
 
   return (
     <div>
       <Button
         style={{ marginLeft: "10em" }}
         variant="primary"
-        onClick={handleShow}
-      >
+        onClick={handleShow}>
         리뷰작성
       </Button>
 
@@ -33,7 +57,7 @@ const WriteReview = (props) => {
                 <Row>진료는 어떠셨어요?</Row>
                 <Row>
                   <div>
-                    <Star />
+                    <Star setCountStarResult={setCountStar} />
                   </div>
                 </Row>
               </Modal.Title>
@@ -43,9 +67,14 @@ const WriteReview = (props) => {
             <Row>
               <div style={{ margin: "1vh" }}>
                 <h5>진료 결과는 어때요?</h5>
-                <Button style={{ marginRight: "0.5em" }}>효과없어요</Button>
-                <Button style={{ marginRight: "0.5em" }}>보통이에요</Button>
-                <Button style={{ marginRight: "0.5em" }}>효과좋아요</Button>
+                <Button onClick={() => {btnColor === "blue" ? setBtnColor("green") : setBtnColor("blue");}} 
+                style={{ backgroundColor : btnColor, border : "none", marginRight: "0.5em"}}>효과없어요</Button>
+                
+                <Button onClick={() => {btnColor === "blue" ? setBtnColor("green") : setBtnColor("blue");}} 
+                style={{backgroundColor : btnColor, marginRight: "0.5em" }}>보통이에요</Button>
+                
+                <Button onClick={() => {btnColor === "blue" ? setBtnColor("green") : setBtnColor("blue");}}  
+                  style={{backgroundColor : btnColor, marginRight: "0.5em" }}>효과좋아요</Button>
               </div>
             </Row>
 
@@ -63,7 +92,7 @@ const WriteReview = (props) => {
                 <h5> 시설 장비는 어떤가요?</h5>
                 <Button style={{ marginRight: "0.5em" }}>노후되었어요</Button>
                 <Button style={{ marginRight: "0.5em" }}>보통이에요</Button>
-                <Button style={{ marginRight: "0.5em" }}>신규장비에요</Button>
+                <Button style={{ marginRight: "0em" }}>신규장비에요</Button>
               </div>
             </Row>
 
@@ -93,10 +122,7 @@ const WriteReview = (props) => {
               <Button
                 style={{ width: "90%" }}
                 variant="secondary"
-                onClick={handleClose}
-                countStar={countStar}
-                setCountStar={setCountStar}
-              >
+                onClick={handleClose}>
                 작성완료
               </Button>
             </Row>

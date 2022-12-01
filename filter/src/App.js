@@ -19,7 +19,6 @@ function App() {
           <Route path ='/review' element = {<Review/> } />
           </Route>  
       </Routes>
-     
       </DataProvider>
       
         

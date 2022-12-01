@@ -9,3 +9,9 @@ button{
 .starColorNull{
     color : "lightgray"
 }
+
+
+/*write review*/
+.btnColor{
+    background-color: red;
+}

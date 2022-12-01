@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import { useState } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Star from "../components/Star";
+import DataContext from "../Context/DataContext";
 import WriteReview from "./WriteReview";
 
 const Review = (props) => {
+    const data = useContext(DataContext);
+    
     const {countStar} = props; 
     console.log(countStar);
 
@@ -37,11 +41,11 @@ const Review = (props) => {
             </Row>
             <Row style={{backgroundColor : "lightgray", borderRadius : "10px", width : "340px", marginLeft : "3vw"}}>
                 <Row >
-                    <Star/>
+                    <Star setCount={data.state.comments[0].countStar} />
                 </Row>
                 <Row>방문 미인증 | 재방문 할래요</Row>
                 <Row>
-                    <textarea name="" id="" cols="10" rows="5"></textarea>
+                    <textarea name="" id="" cols="10" rows="5" value={data.state.comments[0].comment}></textarea>
                 </Row>
             </Row>
         </div>
