@@ -4,7 +4,7 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Star from "../components/Star";
 import DataContext from "../Context/DataContext";
-import WriteReview from "./WriteReview";
+import ReviewModal from "./ReviewModal";
 
 const Review = (props) => {
     const data = useContext(DataContext);
@@ -14,7 +14,7 @@ const Review = (props) => {
          <div style={{ width: "390px", height: "844px", border: "2px solid black"}}>
             <Row style={{marginTop : "2vh"}}> 
                 <Col xs={3} style={{marginBottom : "2vh"}}><h2>리뷰</h2></Col>
-                <Col> <WriteReview/> </Col>
+                <Col> <ReviewModal /> </Col>
             </Row>
             <Row>
                 <div> 이 병원을 {}가 재방문하고 싶어해요 </div>

@@ -9,21 +9,23 @@ import { Form } from "react-bootstrap";
 import { useContext } from "react";
 import DataContext from "../Context/DataContext";
 
-const WriteReview = () => {
+const ReviewModal = () => {
   const data = useContext(DataContext);
   const [countStar, setCountStar] = useState();
+  const [textInput, setTextInput] = useState();
   
   const [show, setShow] = useState(false);
 
-  const handleClose = () => {
+  //useEffect로 버튼 누를때 값출력? 
+  const AddReview = () => {
     data.action.setComments([...data.state.comments, {
       Id : 1, 
       name : "user",
-      countStar : 0,
+      countStar : {setCountStar},
       btn1 : "효과좋아요",
       btn2 : "친절해요", 
       btn3 : "신규장비에요",
-      review : "comment",
+      review : {setTextInput},
       yesNo : "yes" 
   }]);
 
@@ -36,16 +38,6 @@ const WriteReview = () => {
   // 색상변경
   const [btnColor, setBtnColor] = useState(["blue"]);
 
-  const [reviewBtn, setReviewBtn] = useState([
-    { btnId : 1, ChooseBtn : "효과없어요" }, 
-    { btnId : 2, ChooseBtn : "보통이에요" }, 
-    { btnId : 3, ChooseBtn : "효과좋아요" }, 
-    { btnId : 4, ChooseBtn : "불친절해요" }, 
-    { btnId : 5, ChooseBtn : "친절해요" }, 
-    { btnId : 6, ChooseBtn : "노후되었어요" }, 
-    { btnId : 7, ChooseBtn : "신규장비에요" }
-])
-
   return (
     <div>
       <Button
@@ -55,7 +47,7 @@ const WriteReview = () => {
         리뷰작성
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={AddReview}>
         <Form>
           <Modal.Header>
             <div style={{ margin: "0 auto" }}>
@@ -105,7 +97,7 @@ const WriteReview = () => {
             <Row>
               <div style={{ margin: "3vh 1vh 1vh 1vh" }}>
                 <h5>상세한 리뷰를 작성해주세요</h5>
-                <CommentInput />
+                <CommentInput setTextInput={setTextInput}/>
               </div>
             </Row>
 
@@ -128,7 +120,7 @@ const WriteReview = () => {
               <Button
                 style={{ width: "90%" }}
                 variant="secondary"
-                onClick={handleClose}>
+                onClick={AddReview}>
                 작성완료
               </Button>
             </Row>
@@ -140,4 +132,4 @@ const WriteReview = () => {
   );
 };
 
-export default WriteReview;
+export default ReviewModal;

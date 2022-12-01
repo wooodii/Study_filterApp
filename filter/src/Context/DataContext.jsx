@@ -14,7 +14,7 @@ const DataProvider = ({children}) => {
             btn2 : "친절해요", 
             btn3 : "신규장비에요",
             review : "comment",
-            yesNo : "yes" 
+            yesNo : "재방문 할래요" 
         }
     ]);
 
@@ -22,7 +22,7 @@ const DataProvider = ({children}) => {
 
     // 재방문버튼
     const value = {
-        state :  {comments, commentCount },
+        state :  {comments, commentCount},
         action :  {setComments, setCommentCount}
     }
 
