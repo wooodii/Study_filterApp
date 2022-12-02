@@ -6,7 +6,7 @@ import Star from "../components/Star";
 import DataContext from "../Context/DataContext";
 import ReviewModal from "./ReviewModal";
 
-const Review = (props) => {
+const Review = () => {
     const data = useContext(DataContext);
 
     return (
@@ -38,10 +38,11 @@ const Review = (props) => {
             </Row>
             <Row style={{backgroundColor : "lightgray", borderRadius : "10px", width : "340px", marginLeft : "3vw"}}>
                 <Row >
-                    <Star setCount={data.state.comments[0].countStar}  />
+                    <Star setCount={data.state.comments[0].countStar}/>
                 </Row>
                 <Row>방문 미인증 | 재방문 할래요</Row>
                 <Row>
+                    {/** map으로 출력 */}
                     <div>{data.state.comments[0].review}</div>
                     <div>{data.state.comments[0].name}</div>
                     <div>{data.state.comments[0].countStar}</div>

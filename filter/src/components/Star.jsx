@@ -5,10 +5,6 @@ import '../css/Star.css';
 const Star = (props) => {
     const {setCount, setCountStarResult} = props;
 
-    // action  : event
-    // datastate 
-    // dataset : setCountResult
-
     const [star, setStar] = useState([
         { gradeId : 1, grade : 1 },
         { gradeId : 2, grade : 2 },
@@ -37,7 +33,6 @@ const Star = (props) => {
         if(!setCountStarResult){
             setCountStarResult(countStar);
         }
-
     }
     
     // useEffect로 
@@ -53,17 +48,17 @@ const Star = (props) => {
 
     return (
         <div>            
-            <button value="click1" onClick={(e) => {starClick(e, 0); countStar(setCountStar(star[0].grade));}}
+            <button value="click1" onClick={(e) => {starClick(e, 0); setCountStar(star[0].grade);}}
             className={click[0] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <button onClick={(e) => {starClick(e, 1); countStar(setCountStar(star[1].grade));}}
+            <button onClick={(e) => {starClick(e, 1); setCountStar(star[1].grade);}}
             className={click[1] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <button onClick={(e) => {starClick(e, 2); countStar(setCountStar(star[2].grade));}}
+            <button onClick={(e) => {starClick(e, 2); setCountStar(star[2].grade);}}
             className={click[2] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <button  onClick={(e) => {starClick(e, 3); countStar(setCountStar(star[3].grade));}}
+            <button  onClick={(e) => {starClick(e, 3); setCountStar(star[3].grade);}}
             className={click[3] ? "starColor" : "starColorNull"}> {starIcon}</button>
-            <button onClick={(e) => {starClick(e, 4); countStar(setCountStar(star[4].grade));}}
+            <button onClick={(e) => {starClick(e, 4); setCountStar(star[4].grade);}}
             className={click[4] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <span style={{marginLeft : "1em", fontSize : "0.8em"}} countStar={countStar} setCountStar={setCountStar}> 
+            <span style={{marginLeft : "1em", fontSize : "0.8em"}}> 
                     {countStar} / 5 </span > 
         </div>
     );
