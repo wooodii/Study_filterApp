@@ -16,10 +16,10 @@ const ReviewModal = () => {
   const [countStar, setCountStar] = useState();
   const [textInput, setTextInput] = useState();
 
-  const [checked, setChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState('1');
-  const [kindValue, setkindValue] = useState('4');
-  const [techValue, setTechValue] = useState('7');
+  const [radioValue, setRadioValue] = useState();
+  const [kindValue, setkindValue] = useState();
+  const [techValue, setTechValue] = useState();
+  const [visitValue, setVisitValue] = useState()
 
   const radios = [
     { name: '효과없어요', value: '1' },
@@ -37,6 +37,11 @@ const ReviewModal = () => {
     { name: '노후되었어요', value: '7' },
     { name: '보통이에요', value: '8' },
     { name: '신규장비에요', value: '9' }
+  ]
+
+  const visit = [
+    { name: '네', value: '10' },
+    { name: '아니요', value: '11' }
   ]
 
   const [show, setShow] = useState(false);
@@ -59,6 +64,10 @@ const ReviewModal = () => {
 
   };
   const handleShow = () => setShow(true);
+  
+  const getCountStar = (count) => {
+    setCountStar(count)  
+  }
 
   return (
     <div>
@@ -76,7 +85,7 @@ const ReviewModal = () => {
               <Modal.Title>
                 <Row>진료는 어떠셨어요?</Row>
                 <Row>
-                    <Star setCountStarResult={setCountStar} />
+                    <Star getCountStar={setCountStar} setCountStarResult={setCountStar} />
                 </Row>
               </Modal.Title>
             </div>
@@ -109,7 +118,7 @@ const ReviewModal = () => {
                       <ToggleButton
                       key={idx}
                       id={`kindness-${idx}`}
-                      type="kindness"
+                      type="radio"
                       variant={idx % 2 ? 'outline-success' : 'outline-success'}
                       name="kindness"
                       value={kindness.value}
@@ -131,7 +140,7 @@ const ReviewModal = () => {
                       <ToggleButton
                       key={idx}
                       id={`tech-${idx}`}
-                      type="tech"
+                      type="radio"
                       variant={idx % 2 ? 'outline-success' : 'outline-success'}
                       name="tech"
                       value={tech.value}
@@ -156,26 +165,22 @@ const ReviewModal = () => {
                 <Col xs={8}>
                   <h5>재방문 하시겠어요?</h5>
                 </Col>
-                <Col xs={1}>
-                <ToggleButton
-                    id="toggle-check"
-                    type="checkbox"
-                    variant="secondary"
-                    checked={checked}
-                    value="1"
-                    onChange={(e) => setChecked(e.currentTarget.checked)}>네
-                </ToggleButton>
-                </Col>
-                <Col xs={3}>
-                <ToggleButton style={{ marginLeft: "0.5em" }}
-                    id="toggle-check"
-                    type="checkbox"
-                    variant="secondary"
-                    checked={checked}
-                    value="2"
-                    onChange={(e) => setChecked(e.currentTarget.checked)}>아니오
-                </ToggleButton>
-                </Col>
+                <ButtonGroup>
+                      {visit.map((visit, idx) => (
+                      <ToggleButton
+                      key={idx}
+                      id={`visit-${idx}`}
+                      type="radio"
+                      variant={idx % 2 ? 'outline-success' : 'outline-success'}
+                      name="visit"
+                      value={visit.value}
+                      checked={visitValue === visit.value}
+                      onChange={(e) => setVisitValue(e.currentTarget.value)}
+                      >
+                      {visit.name}
+                      </ToggleButton>
+                   ))}
+                  </ButtonGroup>
               </div>
             </Row>
             <Row>

@@ -19,6 +19,10 @@ const Star = (props) => {
     // 처음 countStar 초기값이 없다면 0 설정
     const [countStar, setCountStar] = useState(setCount ? setCount : 0);
 
+    const sendCountStar = (countS) => {
+        props.getCountStar(countS)
+    }
+
     const starClick = (e, index) => {
         e.preventDefault();
         let clickState = [...click];
@@ -48,15 +52,15 @@ const Star = (props) => {
 
     return (
         <div>            
-            <button value="click1" onClick={(e) => {starClick(e, 0); setCountStar(star[0].grade);}}
+            <button value="click1" onClick={(e) => {starClick(e, 0); setCountStar(star[0].grade); sendCountStar(star[0].grade)}}
             className={click[0] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <button onClick={(e) => {starClick(e, 1); setCountStar(star[1].grade);}}
+            <button onClick={(e) => {starClick(e, 1); setCountStar(star[1].grade); sendCountStar(star[1].grade)}}
             className={click[1] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <button onClick={(e) => {starClick(e, 2); setCountStar(star[2].grade);}}
+            <button onClick={(e) => {starClick(e, 2); setCountStar(star[2].grade); sendCountStar(star[2].grade)}}
             className={click[2] ? "starColor" : "starColorNull"}>{starIcon}</button>
-            <button  onClick={(e) => {starClick(e, 3); setCountStar(star[3].grade);}}
+            <button  onClick={(e) => {starClick(e, 3); setCountStar(star[3].grade); sendCountStar(star[3].grade)}}
             className={click[3] ? "starColor" : "starColorNull"}> {starIcon}</button>
-            <button onClick={(e) => {starClick(e, 4); setCountStar(star[4].grade);}}
+            <button onClick={(e) => {starClick(e, 4); setCountStar(star[4].grade); sendCountStar(star[4].grade)}}
             className={click[4] ? "starColor" : "starColorNull"}>{starIcon}</button>
             <span style={{marginLeft : "1em", fontSize : "0.8em"}}> 
                     {countStar} / 5 </span > 
