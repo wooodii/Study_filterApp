@@ -13,8 +13,8 @@ const DataProvider = ({children}) => {
             btn1 : "효과좋아요",
             btn2 : "친절해요", 
             btn3 : "신규장비에요",
-            review : "comment",
-            yesNo : "재방문 할래요" 
+            review : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            yesNo : "재방문할래요" 
         }
     ]);
 

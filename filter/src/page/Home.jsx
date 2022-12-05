@@ -1,7 +1,6 @@
 import MedicalCourse from "./MedicalCourse";
 import { useNavigate } from 'react-router-dom';
 import Footer from "../components/Footer";
-import BtnClick from "./BtnClick";
 
 const Home = () => {
   const navigate = useNavigate();

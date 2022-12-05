@@ -19,7 +19,12 @@ const ReviewModal = () => {
   const [radioValue, setRadioValue] = useState();
   const [kindValue, setkindValue] = useState();
   const [techValue, setTechValue] = useState();
-  const [visitValue, setVisitValue] = useState()
+  const [visitValue, setVisitValue] = useState();
+
+  const [btn1, setBtn1] = useState();
+  const [btn2, setBtn2] = useState();
+  const [btn3, setBtn3] = useState();
+  const [yesNo, setYesNoBtn] = useState();
 
   const radios = [
     { name: '효과없어요', value: '1' },
@@ -40,23 +45,22 @@ const ReviewModal = () => {
   ]
 
   const visit = [
-    { name: '네', value: '10' },
-    { name: '아니요', value: '11' }
+    { name: '네', print : "재방문할래요", value: '10' },
+    { name: '아니요', print : "", value: '11' }
   ]
 
   const [show, setShow] = useState(false);
 
-  //useEffect로 버튼 누를때 값출력? 
   const AddReview = () => {
     data.action.setComments([...data.state.comments, {
       Id : 1, 
       name : "user",
       countStar : countStar,
-      btn1 : "효과좋아요",
-      btn2 : "친절해요", 
-      btn3 : "신규장비에요",
+      btn1 : btn1,
+      btn2 : btn2, 
+      btn3 : btn3,
       review : textInput,
-      yesNo : "yes" 
+      yesNo : yesNo 
   }]);
 
     setShow(false); 
@@ -100,11 +104,12 @@ const ReviewModal = () => {
                   key={idx}
                   id={`radio-${idx}`}
                   type="radio"
-                  variant={idx % 2 ? 'outline-success' : 'outline-success'}
+                  variant={'outline-success'}
                   name="radio"
                   value={radio.value}
                   checked={radioValue === radio.value}
                   onChange={(e) =>  setRadioValue(e.currentTarget.value)}
+                  onClick={() =>(setBtn1(radio.name))}
                   > {radio.name}
                   </ToggleButton>))}
                   </ButtonGroup>
@@ -124,10 +129,11 @@ const ReviewModal = () => {
                       value={kindness.value}
                       checked={kindValue === kindness.value}
                       onChange={(e) => setkindValue(e.currentTarget.value)}
+                      onClick={() =>(setBtn2(kindness.name))}
                       >
                       {kindness.name}
                       </ToggleButton>
-                   ))}
+                  ))}
                   </ButtonGroup>
                 </div>
             </Row>
@@ -146,10 +152,11 @@ const ReviewModal = () => {
                       value={tech.value}
                       checked={techValue === tech.value}
                       onChange={(e) => setTechValue(e.currentTarget.value)}
+                      onClick={() =>(setBtn3(tech.name))}
                       >
                       {tech.name}
                       </ToggleButton>
-                   ))}
+                  ))}
                   </ButtonGroup>
                 </div>
             </Row>
@@ -176,10 +183,11 @@ const ReviewModal = () => {
                       value={visit.value}
                       checked={visitValue === visit.value}
                       onChange={(e) => setVisitValue(e.currentTarget.value)}
+                      onClick={() => {setYesNoBtn(visit.print)}}
                       >
                       {visit.name}
                       </ToggleButton>
-                   ))}
+                  ))}
                   </ButtonGroup>
               </div>
             </Row>
